@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Na Moo Thai Take Away | Autentisk thaimat i Åkersberga</title>
+    <meta name="description" content="Na Moo Thai Take Away erbjuder autentisk thaimat lagad med kärlek. Vi är en lokal familjerestaurang i Åkersberga.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Variabler för färgschema */
+        :root {
+            --red-dark: #7c0a02;     /* Djup röd */
+            --red-light: #9e1b11;    /* Ljusare röd för hover */
+            --gold: #c5a059;         /* Guld/Brons */
+            --gold-light: #dfbd73;   /* Ljusare guld för hover */
+            --cream: #fdfbf7;        /* Krämvit bakgrund */
+            --text-dark: #2c1e16;    /* Mörkbrun/svart för text */
+            --text-light: #ffffff;   /* Vit text */
+            
+            --font-heading: 'Cormorant Garamond', serif;
+            --font-body: 'DM Sans', sans-serif;
+        }
+
+        /* Grundläggande återställning (Reset) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scroll för hela sidan */
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background-color: var(--cream);
+            /* Subtilt mönster för bakgrunden */
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c5a059' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--red-dark);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Typografi */
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 2rem; position: relative; }
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background-color: var(--gold);
+            margin: 0.5rem auto 0;
+        }
+
+        /* Navigering */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(253, 251, 247, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--red-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Hamburger-meny för mobil */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        .menu-toggle span {
+            width: 25px;
+            height: 2px;
+            background-color: var(--red-dark);
+            transition: 0.3s;
+        }
+
+        /* Hero Sektion */
+        #hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: linear-gradient(rgba(253, 251, 247, 0.7), rgba(253, 251, 247, 0.9)), var(--cream);
+            margin-top: 60px; /* Offset for fixed header */
+        }
+
+        #hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-style: italic;
+            font-family: var(--font-heading);
+        }
+
+        .rating-badge {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 500;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: rgba(197, 160, 89, 0.1);
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--red-dark);
+            color: var(--text-light);
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(124, 10, 2, 0.2);
+            border: 2px solid var(--red-dark);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--gold);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.3);
+        }
+
+        /* Sektioner layout */
+        section {
+            padding: 6rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Om oss */
+        #om-oss {
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 800px;
+        }
+
+        /* Meny Sektion */
+        .menu-category {
+            margin-bottom: 4rem;
+        }
+
+        .menu-category h3 {
+            font-size: 2rem;
+            color: var(--gold);
+            border-bottom: 1px solid var(--gold);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            break-inside: avoid;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-item-title {
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--red-dark);
+        }
+
+        .menu-item-dots {
+            flex-grow: 1;
+            border-bottom: 1px dotted var(--gold);
+            margin: 0 10px;
+            position: relative;
+            top: -5px;
+        }
+
+        .menu-item-price {
+            font-weight: 500;
+            color: var(--text-dark);
+            white-space: nowrap;
+        }
+
+        .menu-item-desc {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .spice {
+            font-size: 1rem;
+        }
+
+        /* Extras lista */
+        .extras-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+            list-style-type: none;
+        }
+
+        .extras-list li {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid rgba(197, 160, 89, 0.2);
+            padding-bottom: 0.3rem;
+        }
+
+        /* Öppettider */
+        .hours-container {
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 600px;
+            margin: 0 auto;
+            border-top: 4px solid var(--red-dark);
+        }
+
+        .hours-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .hours-table td {
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+
+        .hours-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .hours-table td:last-child {
+            text-align: right;
+            font-weight: 500;
+        }
+
+        /* Kontakt & Karta */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background-color: #fff;
+            padding: 3rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .contact-info p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-info strong {
+            color: var(--red-dark);
+            font-family: var(--font-heading);
+            font-size: 1.3rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .contact-link {
+            color: var(--gold);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .contact-link:hover {
+            color: var(--red-dark);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            border: 0;
+            border-radius: 4px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--red-dark);
+            color: var(--cream);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* Animationer (Fade-in on scroll) */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsiv design */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 3rem; }
+            .menu-grid { grid-template-columns: 1fr; }
+            .contact-grid { grid-template-columns: 1fr; }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--cream);
+                text-align: center;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.05);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav-container">
+            <a href="#hero" class="logo">Na Moo Thai</a>
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#om-oss">Om oss</a></li>
+                <li><a href="#meny">Meny</a></li>
+                <li><a href="#oppettider">Öppettider</a></li>
+                <li><a href="#kontakt">Kontakt</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section id="hero" class="fade-in">
+        <h1>Na Moo Thai Take Away</h1>
+        <p>Äkta thaimat i hjärtat av Åkersberga</p>
+        <div class="rating-badge">
+            <span>★</span> 4.5 på Google Maps
+        </div>
+        <a href="tel:+46760215079" class="btn-primary">Ring & Beställ</a>
+    </section>
+
+    <section id="om-oss" class="fade-in">
+        <h2>Om Oss</h2>
+        <p>Na Moo Thai Take Away erbjuder autentisk thaimat lagad med kärlek och traditionella recept. Vi är en lokal familjerestaurang i Åkersberga som serverar färsklagad take away varje dag. Hos oss är varje rätt en smakresa till Thailand.</p>
+    </section>
+
+    <section id="meny">
+        <h2 class="fade-in">Vår Meny</h2>
+
+        <div class="menu-category fade-in">
+            <h3>Curryrätter <span style="font-size:1rem; color:#555; font-family:sans-serif; font-weight:normal;">(serveras med ris, valfri protein)</span></h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">1. Gaeng Keow Wan <span class="spice">🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Gröncurry, kokosmjölk, grönsaker & basilika</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">2. Gaeng Ped <span class="spice">🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Röd curry, kokosmjölk, grönsaker & basilika</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">3. Gaeng Paneng <span class="spice">🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Panengcurry, kokosmjölk & grönsaker</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">4. Gaeng Massaman <span class="spice">🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Massamancurry, kokosmjölk, grönsaker, jordnötter & potatis</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category fade-in">
+            <h3>Wok & Grönsaker <span style="font-size:1rem; color:#555; font-family:sans-serif; font-weight:normal;">(serveras med ris, valfri protein)</span></h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">5. Pad Prew Wan</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Grönsaker i sötsur sås, ananas, tomat & gurka</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">6. Pad Kra Pao <span class="spice">🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Grönsaker, vitlök, chili & stark basilika</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">7. Kao Phad</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Stekt ris, grönsaker & ägg</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">8. Phad Pak</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Vitlök, grönsaker med ostronsås</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">9. Pad Met Mamoang <span class="spice">🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Vitlök, grönsaker, chilisås & cashewnötter</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">10. Phad Nam Man Hoi</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Vitlök, grönsaker, ostronsås & vitpeppar</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">11. Phad King</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Vitlök, grönsaker, ostronsås & ingefära</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">12. Phad Prik Pao <span class="spice">🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Vitlök, grönsaker, chili, chilisås & grönpeppar</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">13. Phad Cha <span class="spice">🌶🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Vitlök, grönsaker, chili, grönpeppar, basilika & fingerrot</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">14. Phad Ped <span class="spice">🌶🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Röd curry, kokosmjölk, grönsaker & basilika</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category fade-in">
+            <h3>Soppor <span style="font-size:1rem; color:#555; font-family:sans-serif; font-weight:normal;">(serveras med ris)</span></h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">15. Tom Yam Koong <span class="spice">🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">140 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Räksoppa med kokosmjölk, chilipasta, galanga, citrongräs, lime & koriander</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">16. Tom Kha Kai</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Kycklingsoppa med kokosmjölk, svamp, galanga, citrongräs, lime & koriander</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category fade-in">
+            <h3>Grillade eller friterade rätter</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">17. Friterat kyckling/räkor</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Serveras med ris. Vetemjöl, salt & sweet chilisås</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">18. Vårrullar kyckling/nötkött</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Utan ris. 7 st hemlagade vårrullar, grönsaker, glasnudlar & sweet chilisås</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">19. Vegetariska vårrullar</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">125 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Utan ris. 7 st hemlagade vårrullar, grönsaker, glasnudlar & sweet chilisås</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">20. Gai Saty</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Serveras med ris. Kycklingspett med jordnötssås</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category fade-in">
+            <h3>Nudlar</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">21. Phad Thai</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Wokade risnudlar, ägg, grönsaker, jordnötter & lime</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">22. Phad Mee Laung</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Wokade äggnudlar & grönsaker</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">23. Phad Woon Sen</span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Wokade glasnudlar, grönsaker, rödlök & ägg</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">24. Phad Mee Daeng <span class="spice">🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Wokade äggnudlar i rödcurry, grönsaker & kokosmjölk</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category fade-in">
+            <h3>Sallader</h3>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">30. Yam Woon Sen <span class="spice">🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">(Räkor/fläsk) Glasnudelsallad, grönsaker, chili, lime, rödlök & koriander</p>
+                </div>
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">31. Yam Moo <span class="spice">🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">130 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Thaisallad med fläsk, grönsaker, chili, lime, rödlök, koriander & selleri</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category fade-in">
+            <h3>Husspecial</h3>
+            <div class="menu-grid" style="grid-template-columns: 1fr;">
+                <div class="menu-item">
+                    <div class="menu-item-header">
+                        <span class="menu-item-title">32. Na Moo Special <span class="spice">🌶🌶🌶</span></span>
+                        <div class="menu-item-dots"></div>
+                        <span class="menu-item-price">140 kr</span>
+                    </div>
+                    <p class="menu-item-desc">Räkor och bläckfisk i stark sås, grönsaker, chilipasta, chili, svartpeppar, majs, vårlök & oregano</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="menu-category fade-in">
+            <h3>Tillbehör & Extras</h3>
+            <ul class="extras-list">
+                <li><span>Kyckling</span> <span>20 kr</span></li>
+                <li><span>Biff</span> <span>20 kr</span></li>
+                <li><span>Fläsk</span> <span>20 kr</span></li>
+                <li><span>Tofu</span> <span>20 kr</span></li>
+                <li><span>Ris</span> <span>20 kr</span></li>
+                <li><span>Grönsaker</span> <span>20 kr</span></li>
+                <li><span>Jordnötssås</span> <span>20 kr</span></li>
+                <li><span>Cashewnötter</span> <span>15 kr</span></li>
+                <li><span>Sweet chilisås</span> <span>15 kr</span></li>
+                <li><span>Hemlagade vårrullar Veg.</span> <span>18 kr/st</span></li>
+                <li><span>Hemlagade vårrullar Kött</span> <span>20 kr/st</span></li>
+                <li><span>Räkor</span> <span>20 kr/st</span></li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="oppettider" class="fade-in">
+        <h2>Öppettider</h2>
+        <div class="hours-container">
+            <table class="hours-table">
+                <tr>
+                    <td>Måndag</td>
+                    <td>11:00 – 20:00</td>
+                </tr>
+                <tr>
+                    <td>Tisdag</td>
+                    <td>11:00 – 20:00</td>
+                </tr>
+                <tr>
+                    <td>Onsdag</td>
+                    <td>11:00 – 20:00</td>
+                </tr>
+                <tr>
+                    <td>Torsdag</td>
+                    <td>11:00 – 20:00</td>
+                </tr>
+                <tr>
+                    <td>Fredag</td>
+                    <td>11:00 – 20:00</td>
+                </tr>
+                <tr>
+                    <td>Lördag</td>
+                    <td>11:00 – 20:00</td>
+                </tr>
+                <tr>
+                    <td>Söndag</td>
+                    <td>11:00 – 20:00</td>
+                </tr>
+            </table>
+            <p style="text-align:center; margin-top:1.5rem; font-size:0.9rem; color:#666;">
+                <i>*Take away & Kerbside pickup tillgängligt.</i>
+            </p>
+        </div>
+    </section>
+
+    <section id="kontakt" class="fade-in">
+        <h2>Kontakt & Hitta oss</h2>
+        <div class="contact-grid">
+            <div class="contact-info">
+                <p>
+                    <strong>Telefon (Ring & Beställ)</strong>
+                    <a href="tel:+46760215079" class="contact-link">+46 76 021 50 79</a>
+                </p>
+                <p>
+                    <strong>Adress</strong>
+                    <span>Båthamnsvägen 7</span>
+                    <span>184 40 Åkersberga</span>
+                    <span>Sverige</span>
+                </p>
+                <div style="margin-top: 2rem;">
+                    <a href="tel:+46760215079" class="btn-primary" style="padding: 0.8rem 2rem;">Beställ Nu</a>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://maps.google.com/?cid=14406974706878413330&g_mp=Cidnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLlNlYXJjaFRleHQ" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Karta till Na Moo Thai Take Away">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h3 style="color:var(--cream); margin-bottom: 1rem; font-size: 1.8rem;">Na Moo Thai Take Away</h3>
+        <p>Båthamnsvägen 7, 184 40 Åkersberga</p>
+        <p>Tel: <a href="tel:+46760215079" style="text-decoration: underline;">+46 76 021 50 79</a></p>
+        <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.7;">© 2026 Na Moo Thai Take Away.</p>
+    </footer>
+
+    <script>
+        // Mobilmeny Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Stäng mobilmenyn när en länk klickas
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+
+        // Intersection Observer för Scroll Fade-in Animationer
+        document.addEventListener("DOMContentLoaded", function() {
+            const faders = document.querySelectorAll('.fade-in');
+            
+            const appearOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+
+</body>
+</html>
